@@ -6,7 +6,7 @@ st.image(image_path)
 
 def main():
     st.title("Columns Radar Plot")
-    st.subheader("A web application that allows you to quickly choose equivalent columns for HPLC")
+    st.text("A web application that allows you to quickly choose equivalent columns for HPLC")
 
 
     data = [
