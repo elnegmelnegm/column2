@@ -1,32 +1,5 @@
 import plotly.express as px
-import plotly.graph_objects as go
 
-def plot_radar(data):
-    fig = go.Figure()
-
-    for i in range(len(data)):
-        fig.add_trace(
-            go.Scatterpolar(
-                r=data[i][1] + data[i][1][:1],
-                theta=data[i][0] + data[i][0][:1],
-                name=data[i][0],
-                showlegend=True,
-            )
-        )
-
-    fig.update_layout(
-        polar=dict(
-            radialaxis=dict(
-                visible=True,
-                range=[0, max(max(item[1]) for item in data)]
-            )
-        ),
-        title="Radar Chart for Chemical Analysis",
-    )
-
-    fig.show()
-
-# Your data
 data = [
     ('Hydrosphere C18', [1.5, 1.3, 4.4, 1.9, 1.9]),
     ('TSKgel ODS-100V 3m', [1.9, 1, 6, 1.4, 1.8]),
@@ -43,5 +16,16 @@ data = [
     ('Cosmosil 5C18-PAQ', [1.2, 2.2, 2.5, 1.5, 2]),
 ]
 
-# Plot the radar chart
-plot_radar(data)
+# Extract labels and values
+labels, values = zip(*data)
+
+# Create a polar line plot
+fig = px.line_polar(
+    r=values[0],  # Use the values from the first row
+    theta=labels,
+    line_close=True,
+    range_r=[min(values[0]), max(values[0])],  # Adjust the range based on your data
+    title="Your Radar Plot Title"
+)
+
+fig.show()
