@@ -22,7 +22,7 @@ def main():
     filtered_data = []
     for i, label in enumerate(['Line A', 'Line B']):
         if label in selected_lines:
-            filtered_data.append({'r': data[i], 'theta': labels})
+            filtered_data.extend(data[i])
 
     if not filtered_data:
         st.warning("No data available for the selected lines.")
@@ -30,8 +30,8 @@ def main():
 
     try:
         fig = px.line_polar(
-            r=filtered_data,
-            theta=labels,
+            r=[filtered_data],
+            theta=labels * len(selected_lines),
             line_close=True,
             range_r=[0, 1.0],
             title=f"Selected Lines: {', '.join(selected_lines)}"
