@@ -1,8 +1,13 @@
 import streamlit as st
 import plotly.express as px
+from PIL import Image
+image_path = 'https://www.edaegypt.gov.eg/media/wc3lsydo/group-287.png'
+st.image(image_path)
 
 def main():
     st.title("Columns Radar Plot")
+    st.subheader("A web application that allows you to quickly choose equivalent columns for HPLC")
+
 
     data = [
     [0.55, 0.015918958, 0.198412698, 0.2, 0.674418605],
