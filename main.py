@@ -29,9 +29,12 @@ def main():
         return
 
     try:
+        # Repeat labels for each selected line
+        theta_values = labels * len(selected_lines)
+
         fig = px.line_polar(
-            r=[filtered_data],
-            theta=labels * len(selected_lines),
+            r=filtered_data,
+            theta=theta_values,
             line_close=True,
             range_r=[0, 1.0],
             title=f"Selected Lines: {', '.join(selected_lines)}"
