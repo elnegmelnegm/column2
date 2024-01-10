@@ -264,7 +264,7 @@ def main():
 
 
     if not selected_lines:
-        st.warning("Please select at least one line.")
+        st.warning("Please select at least one column.")
         return
 
     # Filter data based on user selection
