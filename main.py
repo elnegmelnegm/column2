@@ -21,17 +21,24 @@ def main():
         return
 
     # Filter data based on user selection
-    filtered_data = [data[i] for i, label in enumerate(['Line A', 'Line B']) if label in selected_lines]
+    filtered_data = []
+    for i, label in enumerate(['Line A', 'Line B']):
+        if label in selected_lines:
+            filtered_data.append(data[i])
 
-    if filtered_data:
-        fig = px.line_polar(
-            r=filtered_data,
-            theta=labels,
-            line_close=True,
-            range_r=[0, 1.0],
-            title=f"Selected Lines: {', '.join(selected_lines)}"
-        )
-        st.plotly_chart(fig)
+    if not filtered_data:
+        st.warning("No data available for the selected lines.")
+        return
+
+    fig = px.line_polar(
+        r=filtered_data,
+        theta=labels,
+        line_close=True,
+        range_r=[0, 1.0],
+        title=f"Selected Lines: {', '.join(selected_lines)}"
+    )
+
+    st.plotly_chart(fig)
 
 if __name__ == '__main__':
     main()
