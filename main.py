@@ -10,8 +10,6 @@ def main():
     ]
 
     labels = ['Hy', 'CTF', 'CFA', 'TFA', 'BD']
-    flat_data = [value for sublist in data for value in sublist]
-    labels *= len(data)
 
     # Add a multiselect widget for choosing lines
     selected_lines = st.multiselect('Select lines to display:', ['Line A', 'Line B'])
@@ -24,20 +22,16 @@ def main():
     filtered_data = []
     for i, label in enumerate(['Line A', 'Line B']):
         if label in selected_lines:
-            filtered_data.append(data[i])
+            filtered_data.append({'r': data[i], 'theta': labels})
 
     if not filtered_data:
         st.warning("No data available for the selected lines.")
         return
 
-    # Create 'r' and 'theta' for each selected line
-    r_values = [{'r': line} for line in filtered_data]
-    theta_values = labels
-
     try:
         fig = px.line_polar(
-            r=r_values,
-            theta=theta_values,
+            r=filtered_data,
+            theta=labels,
             line_close=True,
             range_r=[0, 1.0],
             title=f"Selected Lines: {', '.join(selected_lines)}"
