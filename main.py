@@ -13,44 +13,23 @@ def main():
     flat_data = [value for sublist in data for value in sublist]
     labels *= len(data)
 
-    fig = px.line_polar(
-        r=flat_data,
-        theta=labels,
-        line_close=True,
-        range_r=[0, 1.0],
-        title="Your Radar Plot Title"
-    )
+    # Add a multiselect widget for choosing lines
+    selected_lines = st.multiselect('Select lines to display:', ['Line A', 'Line B'])
 
-    st.plotly_chart(fig)
+    if not selected_lines:
+        st.warning("Please select at least one line.")
+        return
 
-    # Add a selectbox for choosing lines
-    selected_lines = st.multiselect('Select lines to display:', ['Line A', 'Line B', 'Both'])
+    # Filter data based on user selection
+    filtered_data = [data[i] for i, label in enumerate(['Line A', 'Line B']) if label in selected_lines]
 
-    if 'Line A' in selected_lines and 'Line B' not in selected_lines:
+    if filtered_data:
         fig = px.line_polar(
-            r=data[0],
+            r=filtered_data,
             theta=labels,
             line_close=True,
             range_r=[0, 1.0],
-            title="Line A"
-        )
-        st.plotly_chart(fig)
-    elif 'Line B' in selected_lines and 'Line A' not in selected_lines:
-        fig = px.line_polar(
-            r=data[1],
-            theta=labels,
-            line_close=True,
-            range_r=[0, 1.0],
-            title="Line B"
-        )
-        st.plotly_chart(fig)
-    elif 'Both' in selected_lines:
-        fig = px.line_polar(
-            r=data,
-            theta=labels,
-            line_close=True,
-            range_r=[0, 1.0],
-            title="Both Lines"
+            title=f"Selected Lines: {', '.join(selected_lines)}"
         )
         st.plotly_chart(fig)
 
