@@ -2,5 +2,8 @@ streamlit
 pandas
 numpy
 matplotlib
-plotly_express==0.4.1
+kaleido
+openpyxl
+plotly
+
 
