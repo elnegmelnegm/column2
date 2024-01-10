@@ -26,19 +26,27 @@ def main():
         if label in selected_lines:
             filtered_data.append(data[i])
 
+    print("Selected Lines:", selected_lines)
+    print("Filtered Data:", filtered_data)
+
     if not filtered_data:
         st.warning("No data available for the selected lines.")
         return
 
-    fig = px.line_polar(
-        r=filtered_data,
-        theta=labels,
-        line_close=True,
-        range_r=[0, 1.0],
-        title=f"Selected Lines: {', '.join(selected_lines)}"
-    )
+    try:
+        fig = px.line_polar(
+            r=filtered_data,
+            theta=labels,
+            line_close=True,
+            range_r=[0, 1.0],
+            title=f"Selected Lines: {', '.join(selected_lines)}"
+        )
 
-    st.plotly_chart(fig)
+        st.plotly_chart(fig)
+
+    except Exception as e:
+        st.error(f"An error occurred: {e}")
+        print(e)
 
 if __name__ == '__main__':
     main()
