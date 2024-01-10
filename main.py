@@ -2,7 +2,7 @@ import streamlit as st
 import plotly.express as px
 
 def main():
-    st.title("Streamlit Radar Plot")
+    st.title("Columns Radar Plot")
 
     data = [
     [0.55, 0.015918958, 0.198412698, 0.2, 0.674418605],
@@ -135,7 +135,7 @@ def main():
     labels = ['Hy', 'CTF', 'CFA', 'TFA', 'BD']
 
     # Add a multiselect widget for choosing lines
-    selected_lines = st.multiselect('Select lines to display:', [
+    selected_lines = st.multiselect('Select columns to display:', [
     'Zorbax Extend C18',
     'Capcell C18 ACR',
     'SepaxGP-C18',
