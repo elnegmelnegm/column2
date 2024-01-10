@@ -31,8 +31,8 @@ def main():
         return
 
     # Create 'r' and 'theta' for each selected line
-    r_values = filtered_data
-    theta_values = [labels] * len(filtered_data)
+    r_values = [{'r': line} for line in filtered_data]
+    theta_values = labels
 
     try:
         fig = px.line_polar(
