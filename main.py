@@ -7,7 +7,7 @@ st.image(image_path)
 def main():
     st.title("Columns Radar Plot")
     st.subheader("A web application that allows you to quickly choose equivalent columns for HPLC")
- st.markdown('Check out [Hydrophobicity (Hy)](https://apps.usp.org/app/USPNF/columnsGlossary.html#HY), [Chelating Tailing Factor (CTF)](https://apps.usp.org/app/USPNF/columnsGlossary.html#CTF), [Capacity Factor Amitriptyline (CFA)](https://apps.usp.org/app/USPNF/columnsGlossary.html#CFA), [Tailing Factor of Amitriptyline (TFA)](https://apps.usp.org/app/USPNF/columnsGlossary.html#TFA), [Bonding density (BD)](https://apps.usp.org/app/USPNF/columnsGlossary.html#BD)') 
+st.markdown('Check out [Hydrophobicity (Hy)](https://apps.usp.org/app/USPNF/columnsGlossary.html#HY), [Chelating Tailing Factor (CTF)](https://apps.usp.org/app/USPNF/columnsGlossary.html#CTF), [Capacity Factor Amitriptyline (CFA)](https://apps.usp.org/app/USPNF/columnsGlossary.html#CFA), [Tailing Factor of Amitriptyline (TFA)](https://apps.usp.org/app/USPNF/columnsGlossary.html#TFA), [Bonding density (BD)](https://apps.usp.org/app/USPNF/columnsGlossary.html#BD)') 
 
     
 
